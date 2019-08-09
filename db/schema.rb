@@ -45,6 +45,18 @@ ActiveRecord::Schema.define(version: 20190809071837) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "location"
+    t.string   "website"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.integer  "created_by"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string   "name",       default: "", null: false
     t.boolean  "status"

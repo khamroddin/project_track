@@ -4,33 +4,33 @@
     <data-source source="LOCAL" name="Rails zeba: default" uuid="7d682a95-77c5-4ed8-b56b-fdc4af798bb2">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/university</jdbc-url>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/tracker</jdbc-url>
       <user-name>postgres</user-name>
-      <user-password>dfd8dfcfdfd9dfcfdfcbdfd8dfc9dfc2</user-password>
+      <user-password>df9bdf98df99df9edf9fdf9c</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails zeba: development" uuid="2af5c988-a8a8-42b8-9197-eebcbae13ca6">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/university</jdbc-url>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/tracker</jdbc-url>
       <user-name>postgres</user-name>
-      <user-password>dfd8dfcfdfd9dfcfdfcbdfd8dfc9dfc2</user-password>
+      <user-password>df9bdf98df99df9edf9fdf9c</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails zeba: test" uuid="f6b8c615-eae4-49a5-814e-ca879f531356">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/university</jdbc-url>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/tracker</jdbc-url>
       <user-name>postgres</user-name>
-      <user-password>dfd8dfcfdfd9dfcfdfcbdfd8dfc9dfc2</user-password>
+      <user-password>df9bdf98df99df9edf9fdf9c</user-password>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails zeba: production" uuid="d9eda10e-13e0-4796-8a30-17a4c1cc42b0">
       <driver-ref>postgresql</driver-ref>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/university</jdbc-url>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/tracker</jdbc-url>
       <user-name>postgres</user-name>
-      <user-password>dfd8dfcfdfd9dfcfdfcbdfd8dfc9dfc2</user-password>
+      <user-password>df9bdf98df99df9edf9fdf9c</user-password>
       <libraries />
     </data-source>
   </component>

@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   post "employees/new_category"
   get "employees/new_position"
   post "employees/new_position"
+  get 'organization/new'
+  post 'organization/create'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

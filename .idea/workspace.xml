@@ -46,8 +46,8 @@
       <file leaf-file-name="application.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3482309" vertical-offset="848" max-vertical-offset="1470">
-              <caret line="69" column="68" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
+            <state vertical-scroll-proportion="0.43761638" vertical-offset="485" max-vertical-offset="1470">
+              <caret line="48" column="89" selection-start-line="48" selection-start-column="89" selection-end-line="48" selection-end-column="89" />
               <folding />
             </state>
           </provider>
@@ -1166,8 +1166,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3482309" vertical-offset="848" max-vertical-offset="1470">
-          <caret line="69" column="68" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
+        <state vertical-scroll-proportion="0.43761638" vertical-offset="485" max-vertical-offset="1470">
+          <caret line="48" column="89" selection-start-line="48" selection-start-column="89" selection-end-line="48" selection-end-column="89" />
           <folding />
         </state>
       </provider>

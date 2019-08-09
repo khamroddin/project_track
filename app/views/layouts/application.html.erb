@@ -45,8 +45,8 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#"><%= image_tag(Organization.first.logo, size: '25') rescue "" %></a>
-    <a class="navbar-brand" href="#"><%= Organization.first.name rescue "" %></a>
+    <a class="navbar-brand" href="#"><%= image_tag(Organization.first.logo, size: '25') rescue "Logo" %></a>
+    <a class="navbar-brand" href="#"><%= Organization.first.name rescue "OrganizationName" %></a>
 
 
     <% if user_signed_in? %>

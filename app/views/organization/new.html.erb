@@ -1,11 +1,12 @@
 <main class="form">
-  <div class="row">
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
           <h2 class="form-heading">Organization</h2>
           <div class="card-body">
-            <%= form_for(@organization, url: organization_create_path,:multipart => true) do |f| %>
+            <%= form_for(@organization, url: organization_new_path,:multipart => true) do |f| %>
+                <%= render "devise/shared/error_messages", resource: @organization %>
+
                 <div class="form-group row">
                   <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
                   <div class="col-md-6">
@@ -38,7 +39,29 @@
         </div>
       </div>
     </div>
-  </div>
+
+    <div class="span4" >
+      <%unless @organizations.blank?%>
+          <table class="table table-bordered table-responsive-md table-striped text-center">
+            <thead>
+            <tr>
+              <th class="text-center">Name</th>
+              <th class="text-center">Location</th>
+              <th class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%@organizations.each do |organization|%>
+                <tr>
+                  <td class="pt-3-half" contenteditable="true"><%= link_to organization.name,organization.website ,:target => '_blank' %></td>
+                  <td class="pt-3-half" contenteditable="true"><%= organization.location.name rescue "" %></td>
+                  <td class="pt-3-half"><%= link_to 'Edit', organization_edit_path %></td>
+                </tr>
+            <%end%>
+            </tbody>
+          </table>
+      <%end%>
+    </div>
 
 </main>
 

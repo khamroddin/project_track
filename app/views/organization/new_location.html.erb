@@ -1,0 +1,46 @@
+<main class="form">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <h2 class="form-heading">Location</h2>
+          <div class="card-body">
+            <%= form_for(@location, url: organization_new_location_path) do |f| %>
+                <%= render "devise/shared/error_messages", resource: @location %>
+
+                <div class="form-group row">
+                  <label for="name" class="col-md-4 col-form-label text-md-right">Name</label>
+                  <div class="col-md-6">
+                    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+                  </div>
+                </div>
+                <div class="actions">
+                  <%= f.submit "Add" ,class: 'btn btn-primary' %>
+                </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="span4" >
+      <% unless @all_locations.blank? %>
+          <table class="table table-bordered table-responsive-md table-striped text-center">
+            <thead>
+            <tr>
+              <th class="text-center">Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @all_locations.each do |loc|%>
+                <tr>
+                  <td class="pt-3-half" contenteditable="true"><%=  loc.name %></td>
+                </tr>
+            <%end%>
+            </tbody>
+          </table>
+      <%end%>
+    </div>
+
+</main>
+
+

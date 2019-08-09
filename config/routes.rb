@@ -6,8 +6,13 @@ Rails.application.routes.draw do
   get "employees/index"
   get "employees/new_category"
   post "employees/new_category"
+  get 'employees/edit_category/:id' => 'employees#edit_category', as: :emp_edit_cat
+  post 'employees/edit_category/:id' => 'employees#edit_category', as: :emp_update_cat
+
   get "employees/new_position"
   post "employees/new_position"
+  get 'employees/edit_position/:id' => 'employees#edit_position', as: :emp_edit_position
+  post 'employees/edit_position/:id' => 'employees#edit_position', as: :emp_update_position
   get 'organization/new'
   post 'organization/new'
   get 'organization/new_location'

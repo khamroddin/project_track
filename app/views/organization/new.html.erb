@@ -55,7 +55,7 @@
                 <tr>
                   <td class="pt-3-half" contenteditable="true"><%= link_to organization.name,organization.website ,:target => '_blank' %></td>
                   <td class="pt-3-half" contenteditable="true"><%= organization.location.name rescue "" %></td>
-                  <td class="pt-3-half"><%= link_to 'Edit', organization_edit_path %></td>
+                  <td class="pt-3-half"><%= link_to 'Edit', edit_organization_path(organization)%></td>
                 </tr>
             <%end%>
             </tbody>

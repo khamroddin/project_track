@@ -25,4 +25,7 @@ class OrganizationController < ApplicationController
     end
   end
 
+  def edit
+    @organization = Organization.find params[:id]
+  end
 end

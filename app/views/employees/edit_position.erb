@@ -1,4 +1,3 @@
-
 <main class="form">
   <div class="row">
     <div class="row justify-content-center">
@@ -6,8 +5,7 @@
         <div class="card">
           <h2 class="form-heading">Employee Positions</h2>
           <div class="card-body">
-
-            <%=form_for(:employee_position, :action=>employees_new_position_path) do |cat|%>
+            <%=form_for(:employee_position, :action=>emp_update_position_url) do |cat|%>
                 <% @employee_position.errors.full_messages.each do |msg| %>
                     <span class="help-block"><%= msg %></span>
                 <% end %>
@@ -32,29 +30,5 @@
         </div>
       </div>
     </div>
-    <div class="row" >
-      <%unless @employee_positions.blank?%>
-
-          <table class="table table-bordered table-responsive-md table-striped text-center">
-            <thead>
-            <tr>
-              <th class="text-center">Position Name</th>
-              <th class="text-center">Status</th>
-              <th class="text-center"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <%@employee_positions.each do |position|%>
-                <tr>
-                  <td class="pt-3-half" contenteditable="true"><%= position.name%></td>
-                  <td class="pt-3-half" contenteditable="true"><%= position.status? ? 'Active' : 'In-Active'%></td>
-                  <td class="pt-3-half" ><%= link_to 'Edit', emp_edit_position_url(position)%></td>
-                </tr>
-            <%end%>
-            </tbody>
-          </table>
-      <%end%>
-    </div>
-  </div>
-
-</main>
+      </div>
+    </main>

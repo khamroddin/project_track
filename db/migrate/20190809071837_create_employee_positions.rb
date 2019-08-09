@@ -1,0 +1,9 @@
+class CreateEmployeePositions < ActiveRecord::Migration
+  def change
+    create_table :employee_positions do |t|
+      t.string :name
+      t.boolean :status
+      t.timestamps null: false
+    end
+  end
+end

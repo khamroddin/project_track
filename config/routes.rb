@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  get 'employees/index'
+
   devise_for :users
   get 'home/index'
-
+  get "employees/index"
+  get "employees/new_category"
+  post "employees/new_category"
+  get "employees/new_position"
+  post "employees/new_position"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,57 @@
+
+<div class="span12">
+  <div class="row-fluid ">
+    <div class="mstrContentOuter" >
+      <div class="span12" style="padding-top: 50px;">
+        <div class="span8" >
+          <%=form_for(:employee_position, :action=>employees_new_position_path) do |cat|%>
+              <% @employee_position.errors.full_messages.each do |msg| %>
+                  <span class="help-block"><%= msg %></span>
+              <% end %>              <div class="form_row">
+          <span class="form_lbl">Position Name:</span>
+          <span class="form_field"> <%= cat.text_field :name %></span>
+        </div>
+              <div class="form_row">
+                <span class="form_lbl">Status:</span>
+                <span class="form_field">
+                  <%= cat.check_box :status%>
+                </span>
+              </div>
+              <div class="form_row">
+                <span class="button"><%= cat.submit "Create",:class=>"btn"%></span>
+              </div>
+          <%end%>
+        </div>
+        <div class="span4" >
+          <%unless @employee_positions.blank?%>
+
+          <table class="table table-bordered table-responsive-md table-striped text-center">
+            <thead>
+            <tr>
+              <th class="text-center">Position Name</th>
+              <th class="text-center">Status</th>
+              <th class="text-center"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <%@employee_positions.each do |position|%>
+                <tr>
+                  <td class="pt-3-half" contenteditable="true"><%= position.name%></td>
+                  <td class="pt-3-half" contenteditable="true"><%= position.status? ? 'Active' : 'In-Active'%></td>
+                  <td class="pt-3-half" contenteditable="true"></td>
+                </tr>
+            <%end%>
+            </tbody>
+          </table>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

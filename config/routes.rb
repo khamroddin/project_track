@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get "employees/new_position"
   post "employees/new_position"
   get 'organization/new'
-  post 'organization/create'
+  post 'organization/new'
+  get 'organization/new_location'
+  post 'organization/new_location'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

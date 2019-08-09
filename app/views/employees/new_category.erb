@@ -1,56 +1,59 @@
 
-  <main class="form">
-    <div class="row">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card">
-            <h2 class="form-heading">Employee Categories</h2>
-            <div class="card-body">
-              <%=form_for(:employee_category, :action=>employees_new_category_path) do |cat|%>
-                  <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">Category Name:</label>
-                    <div class="col-md-6">
-                      <%= cat.text_field :name, autofocus: true, autocomplete: "name", class: "form-control"  %>
-                    </div>
+<main class="form">
+  <div class="row">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <h2 class="form-heading">Employee Categories</h2>
+          <div class="card-body">
+            <%=form_for(:employee_category, :action=>employees_new_category_path) do |cat|%>
+                <% @employee_category.errors.full_messages.each do |msg| %>
+                    <span class="help-block"><%= msg %></span>
+                <% end %>
+                <div class="form-group row">
+                  <label for="name" class="col-md-4 col-form-label text-md-right">Category Name:</label>
+                  <div class="col-md-6">
+                    <%= cat.text_field :name, autofocus: true, autocomplete: "name", class: "form-control"  %>
                   </div>
-                  <div class="form-group row">
-                    <label for="location" class="col-md-4 col-form-label text-md-right">Status</label>
-                    <div class="col-md-6">
-                      <%= cat.check_box :status%>
-                    </div>
+                </div>
+                <div class="form-group row">
+                  <label for="location" class="col-md-4 col-form-label text-md-right">Status</label>
+                  <div class="col-md-6">
+                    <%= cat.check_box :status%>
                   </div>
+                </div>
 
-                  <div class="actions">
-                    <%= cat.submit "Add" ,class: 'btn btn-primary' %>
-                  </div>
-              <%end%>
-            </div>
+                <div class="actions">
+                  <%= cat.submit "Add" ,class: 'btn btn-primary' %>
+                </div>
+            <%end%>
           </div>
         </div>
       </div>
-      <div class="span4" >
-        <%unless @employee_categories.blank?%>
-
-            <table class="table table-bordered table-responsive-md table-striped text-center">
-              <thead>
-              <tr>
-                <th class="text-center">Category Name</th>
-                <th class="text-center">Status</th>
-                <th class="text-center"></th>
-              </tr>
-              </thead>
-              <tbody>
-              <%@employee_categories.each do |category|%>
-                  <tr>
-                    <td class="pt-3-half" contenteditable="true"><%= category.name%></td>
-                    <td class="pt-3-half" contenteditable="true"><%= category.status? ? 'Active' : 'In-Active'%></td>
-                    <td class="pt-3-half" contenteditable="true"></td>
-                  </tr>
-              <%end%>
-              </tbody>
-            </table>
-        <%end%>
-      </div>
     </div>
+    <div class="span4" >
+      <%unless @employee_categories.blank?%>
 
-  </main>
+          <table class="table table-bordered table-responsive-md table-striped text-center">
+            <thead>
+            <tr>
+              <th class="text-center">Category Name</th>
+              <th class="text-center">Status</th>
+              <th class="text-center"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <%@employee_categories.each do |category|%>
+                <tr>
+                  <td class="pt-3-half" contenteditable="true"><%= category.name%></td>
+                  <td class="pt-3-half" contenteditable="true"><%= category.status? ? 'Active' : 'In-Active'%></td>
+                  <td class="pt-3-half" contenteditable="true"></td>
+                </tr>
+            <%end%>
+            </tbody>
+          </table>
+      <%end%>
+    </div>
+  </div>
+
+</main>

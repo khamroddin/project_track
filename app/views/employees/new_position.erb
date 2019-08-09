@@ -6,7 +6,11 @@
         <div class="card">
           <h2 class="form-heading">Employee Positions</h2>
           <div class="card-body">
+
             <%=form_for(:employee_position, :action=>employees_new_position_path) do |cat|%>
+                <% @employee_position.errors.full_messages.each do |msg| %>
+                    <span class="help-block"><%= msg %></span>
+                <% end %>
                 <div class="form-group row">
                   <label for="name" class="col-md-4 col-form-label text-md-right">Position Name:</label>
                   <div class="col-md-6">

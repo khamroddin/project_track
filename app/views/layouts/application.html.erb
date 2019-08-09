@@ -48,7 +48,7 @@
     <a class="navbar-brand" href="#">LOGO</a>
     <% if user_signed_in? %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav navbar-right">
             <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
           </ul>
         </div>

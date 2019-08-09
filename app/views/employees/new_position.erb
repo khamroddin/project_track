@@ -1,29 +1,35 @@
 
-<div class="span12">
-  <div class="row-fluid ">
-    <div class="mstrContentOuter" >
-      <div class="span12" style="padding-top: 50px;">
-        <div class="span8" >
-          <%=form_for(:employee_position, :action=>employees_new_position_path) do |cat|%>
-              <% @employee_position.errors.full_messages.each do |msg| %>
-                  <span class="help-block"><%= msg %></span>
-              <% end %>              <div class="form_row">
-          <span class="form_lbl">Position Name:</span>
-          <span class="form_field"> <%= cat.text_field :name %></span>
+<main class="form">
+  <div class="cotainer">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <h2 class="form-heading">Employee Positions</h2>
+          <div class="card-body">
+            <%=form_for(:employee_position, :action=>employees_new_position_path) do |cat|%>
+                <div class="form-group row">
+                  <label for="name" class="col-md-4 col-form-label text-md-right">Position Name:</label>
+                  <div class="col-md-6">
+                    <%= cat.text_field :name, autofocus: true, autocomplete: "name", class: "form-control"  %>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="location" class="col-md-4 col-form-label text-md-right">Status</label>
+                  <div class="col-md-6">
+                    <%= cat.check_box :status%>
+                  </div>
+                </div>
+
+                <div class="actions">
+                  <%= cat.submit "Add" ,class: 'btn btn-primary' %>
+                </div>
+            <%end%>
+          </div>
         </div>
-              <div class="form_row">
-                <span class="form_lbl">Status:</span>
-                <span class="form_field">
-                  <%= cat.check_box :status%>
-                </span>
-              </div>
-              <div class="form_row">
-                <span class="button"><%= cat.submit "Create",:class=>"btn"%></span>
-              </div>
-          <%end%>
-        </div>
-        <div class="span4" >
-          <%unless @employee_positions.blank?%>
+      </div>
+    </div>
+    <div class="span4" >
+      <%unless @employee_positions.blank?%>
 
           <table class="table table-bordered table-responsive-md table-striped text-center">
             <thead>
@@ -43,15 +49,8 @@
             <%end%>
             </tbody>
           </table>
-          <%end%>
-        </div>
-      </div>
+      <%end%>
     </div>
   </div>
-</div>
 
-
-
-
-
-
+</main>

@@ -8,7 +8,7 @@
           <div class="card-body">
             <%=form_for(:employee_category, :action=>employees_new_category_path) do |cat|%>
                 <% @employee_category.errors.full_messages.each do |msg| %>
-                    <span class="help-block"><%= msg %></span>
+                    <span class="alert alert-danger"><%= msg %></span>
                 <% end %>
                 <div class="form-group row">
                   <label for="name" class="col-md-4 col-form-label text-md-right">Category Name:</label>

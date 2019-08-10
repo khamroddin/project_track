@@ -20,9 +20,11 @@
               </div>
               <% if devise_mapping.rememberable? %>
                   <label>
-                    <%= f.check_box :remember_me, label: false %>
+
                     Remember me
+                    <%= f.check_box :remember_me, label: false %>
                   </label>
+
               <% end %>
               <div class="actions">
                 <%= f.submit "Log in" ,class: 'btn btn-primary' %>

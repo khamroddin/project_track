@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  get 'clients/index'
 
-  get 'clients/show'
 
   get 'employees/index'
 

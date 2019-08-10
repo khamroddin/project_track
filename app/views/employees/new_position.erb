@@ -2,62 +2,65 @@
 <main class="form">
   <div class="row">
     <div class="row justify-content-center">
-      <div class="col-md-8">
+      <div class="col-md-9">
         <div class="card">
-          <h2 class="form-heading">Employee Positions</h2>
+          <h4 class="form-heading">Employee Positions</h4>
+          <hr class="style2">
           <div class="card-body">
 
-            <%=form_for(:employee_position, :action=>employees_new_position_path) do |cat|%>
+            <%=form_for(:employee_position, :action=>employees_new_position_path) do |position|%>
                 <% @employee_position.errors.full_messages.each do |msg| %>
-                    
+
                     <span class="alert alert-danger" style="margin: 1em;"><%= msg %></span>
                 <% end %>
                 <div class="form-group row">
                   <label for="name" class="col-md-4 col-form-label text-md-right">Position Name:</label>
                   <div class="col-md-6">
-                    <%= cat.text_field :name, autofocus: true, autocomplete: "name", class: "form-control"  %>
+                    <%= position.text_field :name, autofocus: true, autocomplete: "name", class: "form-control"  %>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="location" class="col-md-4 col-form-label text-md-right">Status</label>
                   <div class="col-md-6">
-                    <%= cat.check_box :status%>
+                    <%= position.check_box :status%>
                   </div>
                 </div>
-
-                <div class="actions">
-                  <%= cat.submit "Add" ,class: 'btn btn-primary' %>
+                <div class="form-group row">
+                  <div class="col-md-6 text-center">
+                    <%= position.submit "Add" ,class: 'btn btn-primary' %>
+                  </div>
                 </div>
             <%end%>
           </div>
         </div>
+        <div class="row" >
+          <%unless @employee_positions.blank?%>
+
+              <table class="table table-bordered table-responsive-md table-striped text-center">
+                <thead>
+                <tr>
+                  <th class="text-center">Position Name</th>
+                  <th class="text-center">Status</th>
+                  <th class="text-center"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <%@employee_positions.each do |position|%>
+                    <tr>
+                      <td class="pt-3-half" contenteditable="true"><%= position.name%></td>
+                      <td class="pt-3-half" contenteditable="true"><%= position.status? ? 'Active' : 'In-Active'%></td>
+                      <td class="pt-3-half" >
+                        <%= link_to "Edit", emp_edit_position_url(position),class: "edit" %>
+                      </td>
+                    </tr>
+                <%end%>
+                </tbody>
+              </table>
+          <%end%>
+        </div>
       </div>
     </div>
-    <div class="row" >
-      <%unless @employee_positions.blank?%>
 
-          <table class="table table-bordered table-responsive-md table-striped text-center">
-            <thead>
-            <tr>
-              <th class="text-center">Position Name</th>
-              <th class="text-center">Status</th>
-              <th class="text-center"></th>
-            </tr>
-            </thead>
-            <tbody>
-            <%@employee_positions.each do |position|%>
-                <tr>
-                  <td class="pt-3-half" contenteditable="true"><%= position.name%></td>
-                  <td class="pt-3-half" contenteditable="true"><%= position.status? ? 'Active' : 'In-Active'%></td>
-                  <td class="pt-3-half" >
-                    <%= link_to "Edit", emp_edit_position_url(position),class: "edit" %>
-                  </td>
-                </tr>
-            <%end%>
-            </tbody>
-          </table>
-      <%end%>
-    </div>
   </div>
 
 </main>

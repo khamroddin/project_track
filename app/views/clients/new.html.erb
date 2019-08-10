@@ -1,8 +1,9 @@
 <main class="form">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-9">
       <div class="card">
-        <h2 class="form-heading">Client Registration</h2>
+        <h4 class="form-heading">Client Registration</h4>
+        <hr class="style2">
         <div class="card-body">
           <%= form_for(@client, url: clients_create_path,:multipart => true) do |f| %>
               <%= render "devise/shared/error_messages", resource: @client %>
@@ -32,39 +33,42 @@
                 </div>
               </div>
 
-              <div class="actions">
+              <div class="form-group row">
+              <div class="col-md-6 text-center">
                 <%= f.submit "Add" ,class: 'btn btn-primary' %>
+              </div>
               </div>
           <%end%>
         </div>
       </div>
+      <div class="row" >
+        <%unless @clients.blank?%>
+            <table class="table table-bordered table-responsive-md table-striped text-center">
+              <thead>
+              <tr>
+                <th class="text-center">Name</th>
+                <th class="text-center">Location</th>
+                <th class="text-center">Organizations</th>
+                <th class="text-center">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <%@clients.each do |client|%>
+                  <tr>
+                    <td class="pt-3-half" contenteditable="true"><%= client.client_name%></td>
+                    <td class="pt-3-half" contenteditable="true">test</td>
+                    <td class="pt-3-half">test</td>
+                    <td class="pt-3-half"></td>
+                  </tr>
+              <%end%>
+              </tbody>
+            </table>
+        <%end%>
+      </div>
     </div>
   </div>
 
-  <div class="span4" >
-    <%unless @clients.blank?%>
-        <table class="table table-bordered table-responsive-md table-striped text-center">
-          <thead>
-          <tr>
-            <th class="text-center">Name</th>
-            <th class="text-center">Location</th>
-            <th class="text-center">Organizations</th>
-            <th class="text-center">Actions</th>
-          </tr>
-          </thead>
-          <tbody>
-          <%@clients.each do |client|%>
-              <tr>
-                <td class="pt-3-half" contenteditable="true"><%= client.client_name%></td>
-                <td class="pt-3-half" contenteditable="true">test</td>
-                <td class="pt-3-half">test</td>
-                <td class="pt-3-half"></td>
-              </tr>
-          <%end%>
-          </tbody>
-        </table>
-    <%end%>
-  </div>
+
 
 </main>
 

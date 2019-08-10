@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'clients/index'
+
+  get 'clients/show'
+
   get 'employees/index'
 
   devise_for :users
@@ -17,8 +21,8 @@ Rails.application.routes.draw do
   post 'organization/new'
   get 'organization/new_location'
   post 'organization/new_location'
-
-
+  post 'clients/create'
+  resources :clients
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

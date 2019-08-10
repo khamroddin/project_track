@@ -48,7 +48,9 @@
                 <tr>
                   <td class="pt-3-half" contenteditable="true"><%= position.name%></td>
                   <td class="pt-3-half" contenteditable="true"><%= position.status? ? 'Active' : 'In-Active'%></td>
-                  <td class="pt-3-half" ><%= link_to 'Edit', emp_edit_position_url(position)%></td>
+                  <td class="pt-3-half" >
+                    <%= link_to "Edit", emp_edit_position_url(position),class: "edit" %>
+                  </td>
                 </tr>
             <%end%>
             </tbody>

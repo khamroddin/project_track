@@ -21,6 +21,7 @@ class OrganizationController < ApplicationController
       @location = Location.new(params[:location])
       if @location.save
         flash[:notice] = "successfully created"
+        redirect_to organization_new_location_path
       end
     end
   end

@@ -6,9 +6,13 @@
           <h4 class="form-heading">Employee Positions</h4>
           <hr class="style2">
           <div class="card-body">
-            <%=form_for(:employee_position, :action=>emp_update_position_url) do |position|%>
-                <% @employee_position.errors.full_messages.each do |msg| %>
-                    <span class="help-block"><%= msg %></span>
+            <%=form_for(@employee_position) do |position|%>
+                <% if @employee_position.errors.any? %>
+                    <ul class="alert alert-danger">
+                      <% @employee_position.errors.full_messages.each do |msg| %>
+                          <li class="alert-danger"><%= msg %></li>
+                      <% end %>
+                    </ul>
                 <% end %>
                 <div class="form-group row">
                   <label for="name" class="col-md-4 col-form-label text-md-right">Position Name:</label>

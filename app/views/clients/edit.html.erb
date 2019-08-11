@@ -40,33 +40,6 @@
           <%end%>
         </div>
       </div>
-      <div class="row" >
-        <%unless @clients.blank?%>
-            <table class="table table-bordered table-responsive-md table-striped text-center">
-              <thead>
-              <tr>
-                <th class="text-center">Name</th>
-                <th class="text-center">Location</th>
-                <th class="text-center">Organizations</th>
-                <th class="text-center">Actions</th>
-              </tr>
-              </thead>
-              <tbody>
-              <%@clients.each do |client|%>
-                  <tr>
-                    <td class="pt-3-half" contenteditable="true"><%= client.client_name%></td>
-                    <td class="pt-3-half" contenteditable="true"><%= client.organization.location.name rescue ""%></td>
-                    <td class="pt-3-half"><%= client.organization.name rescue "" %></td>
-                    <td class="pt-3-half">
-                      <%= link_to 'Edit', edit_client_path(client)%> |
-                      <%= link_to 'Delete', client_path(client),method: :delete,data: { confirm: 'Are You sure?' }%>
-                    </td>
-                  </tr>
-              <%end%>
-              </tbody>
-            </table>
-        <%end%>
-      </div>
     </div>
   </div>
 

@@ -1,2 +1,30 @@
-<h1>Employees#index</h1>
-<p>Find me in app/views/employees/index.html.erb</p>
+<div class="span4" >
+  <h2 class="form-heading">Employees</h2>
+  <div id="employee_form">
+  <%unless @employees.blank?%>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+        <tr>
+          <th class="text-center">Employee No.</th>
+          <th class="text-center">Name</th>
+          <th class="text-center">Organization</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%@employees.each do |employee|%>
+            <tr>
+              <td class="pt-3-half" contenteditable="true"><%= employee.employee_no %></td>
+              <td class="pt-3-half" contenteditable="true"><%= employee.full_name %></td>
+              <td class="pt-3-half" contenteditable="true"><%= employee.organization.name rescue "" %></td>
+              <td class="pt-3-half">
+                <%= link_to 'Edit', edit_employee_path(employee)%> |
+                <%= link_to 'Delete', employee_path(employee),method: :delete,data: { confirm: 'Are You sure?' }%>
+              </td>
+            </tr>
+        <%end%>
+        </tbody>
+      </table>
+  <%end%>
+  </div>
+  <%= link_to 'Add Employees', new_employee_path  %>
+</div>

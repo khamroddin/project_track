@@ -7,3 +7,6 @@
 User.create(name: 'admin', role_id: 1,email: 'khamar.md@gmail.com', password: 'admin123')
 User.create(name: 'emp', role_id: 2,email: 'khamar.md@arrowad.org', password: 'emp123')
 Role.create(name: 'admin',status: true)
+
+Location.delete_all
+locations = Location.create([{name: 'Banglore'},{name: 'Chennai'},{name: 'Hyderabad'},{name: 'Kochi'}])

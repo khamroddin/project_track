@@ -1,42 +1,59 @@
 class EmployeesController < ApplicationController
   before_filter :authenticate_user!
   layout 'application'
+
   def index
+    @employees = Employee.all
   end
-  def new_category
-    @employee_category = EmployeeCategory.new
-    @employee_categories = EmployeeCategory.all
-    if request.post?
-      @employee_category = EmployeeCategory.new(params[:employee_category].permit(:name, :status))
-      if @employee_category.save
-        redirect_to :action=> :new_category
-      end
+
+  def new
+    @employee = Employee.new
+    @positions = EmployeePosition.all.map{|l| [l.name,l.id]}
+    @categories = EmployeeCategory.all.map{|l| [l.name,l.id]}
+    @organizations = Organization.all.map{|l| [l.name,l.id]}
+  end
+
+  def create
+    @employee = Employee.new(employee_params)
+    if @employee.save
+      flash[:notice] = "Successfully added #{@employee.employee_no}"
+      redirect_to employees_path
+    else
+      render :new
     end
   end
-  def edit_category
-    @employee_category = EmployeeCategory.find(params[:id])
-    if request.post?
-      if @employee_category.update_attributes(params[:employee_category].permit(:name, :status))
-        redirect_to :action=> :new_category
-      end
+
+  def edit
+    @employee = Employee.find params[:id]
+    @positions = EmployeePosition.all.map{|l| [l.name,l.id]}
+    @categories = EmployeeCategory.all.map{|l| [l.name,l.id]}
+    @organizations = Organization.all.map{|l| [l.name,l.id]}
+  end
+
+  def update
+    @employee = Employee.find params[:id]
+    if @employee.update_attributes(employee_params)
+      flash[:notice] = "Successfully Updated"
+      redirect_to employees_path
+    else
+      @positions = EmployeePosition.all.map{|l| [l.name,l.id]}
+      @categories = EmployeeCategory.all.map{|l| [l.name,l.id]}
+      @organizations = Organization.all.map{|l| [l.name,l.id]}
+      render :edit
     end
   end
-  def new_position
-    @employee_position = EmployeePosition.new
-    @employee_positions = EmployeePosition.all
-    if request.post?
-      @employee_position= EmployeePosition.new(params[:employee_position].permit(:name, :status))
-      if @employee_position.save
-        redirect_to :action=> :new_position
-      end
+
+  def destroy
+    @employee = Employee.find params[:id]
+    if @employee.destroy
+      flash[:notice] = "Deleted Employee"
     end
+    redirect_to employees_path
   end
-  def edit_position
-    @employee_position = EmployeePosition.find(params[:id])
-    if request.post?
-      if @employee_position.update_attributes(params[:employee_position].permit(:name, :status))
-        redirect_to :action=> :new_position
-      end
-    end
+
+  private
+  def employee_params
+    params.require(:employee).permit!
   end
+
 end

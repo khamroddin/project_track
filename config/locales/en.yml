@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  client_text: "Clients"
+  emp_position_text: "Employee Positions"
+  emp_category_text: "Employee Categories"

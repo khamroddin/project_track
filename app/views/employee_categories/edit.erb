@@ -6,9 +6,13 @@
           <h4 class="form-heading">Employee Categories</h4>
           <hr class="style2">
           <div class="card-body">
-            <%=form_for(:employee_category, :action=>emp_update_cat_url) do |cat|%>
-                <% @employee_category.errors.full_messages.each do |msg| %>
-                    <span class="help-block"><%= msg %></span>
+            <%=form_for(@employee_category) do |cat|%>
+                <% if @employee_category.errors.any? %>
+                    <ul class="alert alert-danger">
+                      <% @employee_category.errors.full_messages.each do |msg| %>
+                          <li class="alert-danger"><%= msg %></li>
+                      <% end %>
+                    </ul>
                 <% end %>
                 <div class="form-group row">
                   <label for="name" class="col-md-4 col-form-label text-md-right">Category Name:</label>

@@ -20,7 +20,7 @@
         <td><%= project.client.client_name %></td>
         <td><%= project.start_date %></td>
         <td><%= project.end_date %></td>
-        <td><%= project.manager.full_name %></td>
+        <td><%= project.manager.full_name rescue nil %></td>
         <td><%= project.status ? 'Active' : 'In-Active' %></td>
         <td><%= link_to 'Show', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>

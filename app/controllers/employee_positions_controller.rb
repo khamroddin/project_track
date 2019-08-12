@@ -1,16 +1,20 @@
 class EmployeePositionsController < ApplicationController
+
+  def  index
+    @employee_positions = EmployeePosition.all
+  end
   def new
     @employee_position = EmployeePosition.new
-    @employee_positions = EmployeePosition.all
   end
 
   def create
     @employee_position= EmployeePosition.new(employee_position_params)
-    if @employee_position.save
-      flash[:notice] = "Successfully Created"
-      redirect_to new_employee_position_path
-    else
-      render :new
+    respond_to do |format|
+      if @employee_position.save
+        format.html { redirect_to employee_positions_path, notice: 'Employee Position was successfully created.' }
+      else
+        format.html { render :new }
+      end
     end
   end
 
@@ -20,18 +24,21 @@ class EmployeePositionsController < ApplicationController
 
   def update
     @employee_position = EmployeePosition.find(params[:id])
-    if @employee_position.update_attributes(employee_position_params)
-      flash[:notice] = "Successfully Updated"
-      redirect_to new_employee_position_path
-    else
-      render :edit
+    respond_to do |format|
+      if @employee_position.update(employee_position_params)
+        format.html { redirect_to employee_positions_path, notice: 'Employee Position was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
   def destroy
     @employee_position = EmployeePosition.find(params[:id])
     @employee_position.destroy
-    redirect_to new_employee_position_path
+    respond_to do |format|
+      format.html { redirect_to employee_positions_path, notice: 'Employee Position was successfully destroyed.' }
+    end
   end
 
   private

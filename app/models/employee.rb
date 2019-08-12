@@ -13,7 +13,13 @@ class Employee < ActiveRecord::Base
   validates :first_name , presence: true
   validates :organization_id , presence: true
 
+  after_create :create_user
+
   def full_name
     self.first_name + " " + self.last_name
+  end
+
+  def create_user
+   a= User.create(name: self.employee_no, role_id: 2, email: self.email, password: "pass"+self.employee_no)
   end
 end

@@ -1,16 +1,19 @@
 class EmployeeCategoriesController < ApplicationController
+  def index
+    @employee_categories = EmployeeCategory.all
+  end
   def new
     @employee_category = EmployeeCategory.new
-    @employee_categories = EmployeeCategory.all
   end
 
   def create
     @employee_category = EmployeeCategory.new(employee_categories_params)
-    if @employee_category.save
-      flash[:notice] = "Successfully Created"
-      redirect_to new_employee_category_path
-    else
-      render :new
+    respond_to do |format|
+      if @employee_category.save
+        format.html { redirect_to employee_category_path, notice: 'Employee Category was successfully created.' }
+      else
+        format.html { render :new }
+      end
     end
   end
 
@@ -20,20 +23,21 @@ class EmployeeCategoriesController < ApplicationController
 
   def update
     @employee_category = EmployeeCategory.find(params[:id])
-    if @employee_category.update_attributes(employee_categories_params)
-      flash[:notice] = "Successfully Updated"
-      redirect_to new_employee_category_path
-    else
-      render :edit
+    respond_to do |format|
+      if @client.update(employee_categories_params)
+        format.html { redirect_to employee_categories_path, notice: 'Employee Category was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
   def destroy
     @employee_category = EmployeeCategory.find(params[:id])
-    if @employee_category.destroy
-      flash[:notice] = "Deleted Category"
+    @employee_category.destroy
+    respond_to do |format|
+      format.html { redirect_to employee_categories_path, notice: 'Employee Category was successfully destroyed.' }
     end
-    redirect_to new_employee_category_path
   end
 
   private

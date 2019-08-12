@@ -1,44 +1,52 @@
 class ClientsController < ApplicationController
 
-  def new
+  def index
     @clients = Client.all
+  end
+
+  def new
     @client = Client.new
-    @locations = Location.all.map{|l| [l.name,l.id]}
-    @organizations = Organization.all.map{|l| [l.name,l.id]}
+    @organization = Organization.first
   end
 
   def create
     @client = Client.new(client_params)
-    if @client.save
-      flash[:notice] = "successfully created"
-      redirect_to new_client_path
-    else
-      render :new
+    @organization = Organization.first
+
+    respond_to do |format|
+      if @client.save
+        format.html { redirect_to clients_path, notice: 'Client was successfully created.' }
+      else
+        format.html { render :new }
+      end
     end
+
   end
 
   def edit
     @client = Client.find params[:id]
-    @organizations = Organization.all.map{|l| [l.name,l.id]}
+    @organization = Organization.first
   end
 
   def update
     @client = Client.find params[:id]
-    if @client.update_attributes(client_params)
-      flash[:notice] = "Successfully Updated"
-      redirect_to new_client_path
-    else
-      @organizations = Organization.all.map{|l| [l.name,l.id]}
-      render :edit
+    @organization = Organization.first
+
+    respond_to do |format|
+      if @client.update(client_params)
+        format.html { redirect_to clients_path, notice: 'Client was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
   def destroy
     @client = Client.find params[:id]
-    if @client.destroy
-      flash[:notice] = "Deleted Organization"
+    @client.destroy
+    respond_to do |format|
+      format.html { redirect_to clients_path, notice: 'Client was successfully destroyed.' }
     end
-    redirect_to new_client_path
   end
 
   private

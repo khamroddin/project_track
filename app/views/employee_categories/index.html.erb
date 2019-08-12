@@ -1,0 +1,31 @@
+<h1>Listing Employee Categories</h1>
+
+<div class="row" >
+  <%unless @employee_categories.blank?%>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+        <tr>
+          <th class="text-center">Category Name</th>
+          <th class="text-center">Status</th>
+          <th class="text-center"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%@employee_categories.each do |category|%>
+            <tr>
+              <td class="pt-3-half" contenteditable="true"><%= category.name%></td>
+              <td class="pt-3-half" contenteditable="true"><%= category.status? ? 'Active' : 'In-Active'%></td>
+              <td class="pt-3-half">
+                <%= link_to 'Edit', edit_employee_category_path(category)%> |
+                <%= link_to 'Delete', category,method: :delete,data: { confirm: 'Are You sure?' }%>
+              </td>
+            </tr>
+        <%end%>
+        </tbody>
+      </table>
+  <%end%>
+</div>
+
+<br>
+
+<%= link_to 'New Employee Category', new_employee_category_path %>

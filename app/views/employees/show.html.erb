@@ -1,0 +1,45 @@
+<table class="table table-bordered table-responsive-md table-striped text-center">
+  <tr>
+    <td><strong>Employee No:</strong></td>
+    <td><%= @employee.employee_no %></td>
+  </tr>
+
+  <tr>
+    <td><strong>First Name:</strong></td>
+    <td><%= @employee.first_name %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Last Name:</strong></td>
+    <td><%= @employee.last_name %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Joined Date:</strong></td>
+    <td><%= @employee.joined_date %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Email ID:</strong></td>
+    <td><%= @employee.email %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Mobile No:</strong></td>
+    <td><%= @employee.mobile %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Category:</strong></td>
+    <td><%= @employee.employee_category.name %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Position:</strong></td>
+    <td><%= @employee.employee_position.name %></td>
+  </tr>
+
+</table>
+
+<%= link_to 'Edit', edit_employee_path(@employee) %> |
+<%= link_to 'Back', employees_path %>

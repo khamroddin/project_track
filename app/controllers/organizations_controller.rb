@@ -1,17 +1,22 @@
 class OrganizationsController < ApplicationController
+
+  def index
+    @organizations = Organization.all
+  end
+
   def new
     @organization = Organization.new
-    @organizations = Organization.all
     @locations = Location.all.map{|l| [l.name,l.id]}
   end
 
   def create
     @organization = Organization.new(organization_params)
-    if @organization.save
-      flash[:notice] = "Successfully Created"
-      redirect_to new_organization_path
-    else
-      render :new
+    respond_to do |format|
+      if @organization.save
+        format.html { redirect_to organizations_path, notice: 'Organization was successfully created.' }
+      else
+        format.html { render :new }
+      end
     end
   end
 
@@ -22,21 +27,21 @@ class OrganizationsController < ApplicationController
 
   def update
     @organization = Organization.find params[:id]
-    if @organization.update_attributes(organization_params)
-      flash[:notice] = "Successfully Updated"
-      redirect_to new_organization_path
-    else
-      @locations = Location.all.map{|l| [l.name,l.id]}
-      render :edit
+    respond_to do |format|
+      if @organization.update(organization_params)
+        format.html { redirect_to organizations_path, notice: 'Organization was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
     end
   end
 
   def destroy
     @organization = Organization.find params[:id]
-    if @organization.destroy
-      flash[:notice] = "Deleted Organization"
+    @organization.destroy
+    respond_to do |format|
+      format.html { redirect_to organizations_path, notice: 'Organization was successfully destroyed.' }
     end
-    redirect_to new_organization_path
   end
 
   private

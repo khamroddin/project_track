@@ -1,0 +1,35 @@
+<table class="table table-bordered table-responsive-md table-striped text-center">
+  <tr>
+    <td><strong>Project name:</strong></td>
+    <td><%= @project.project_name %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Client:</strong></td>
+    <td><%= @project.client.client_name %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Start date:</strong></td>
+    <td><%= @project.start_date %></td>
+  </tr>
+
+  <tr>
+    <td><strong>End date:</strong></td>
+    <td><%= @project.end_date %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Manager:</strong></td>
+    <td><%= @project.manager.full_name %></td>
+  </tr>
+
+  <tr>
+    <td><strong>Status:</strong></td>
+    <td><%= @project.status ? 'Active' : 'In-Active' %></td>
+  </tr>
+
+</table>
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

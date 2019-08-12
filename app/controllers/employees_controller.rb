@@ -10,16 +10,21 @@ class EmployeesController < ApplicationController
     @employee = Employee.new
     @positions = EmployeePosition.all.map{|l| [l.name,l.id]}
     @categories = EmployeeCategory.all.map{|l| [l.name,l.id]}
-    @organizations = Organization.all.map{|l| [l.name,l.id]}
+    @organization = Organization.first
   end
 
   def create
     @employee = Employee.new(employee_params)
-    if @employee.save
-      flash[:notice] = "Successfully added #{@employee.employee_no}"
-      redirect_to employees_path
-    else
-      render :new
+
+    respond_to do |format|
+      if @employee.save
+        format.html { redirect_to employees_path, notice: "Employee #{@employee.employee_no} was successfully created." }
+      else
+        @positions = EmployeePosition.all.map{|l| [l.name,l.id]}
+        @categories = EmployeeCategory.all.map{|l| [l.name,l.id]}
+        @organization = Organization.first
+        format.html { render :new }
+      end
     end
   end
 
@@ -27,28 +32,30 @@ class EmployeesController < ApplicationController
     @employee = Employee.find params[:id]
     @positions = EmployeePosition.all.map{|l| [l.name,l.id]}
     @categories = EmployeeCategory.all.map{|l| [l.name,l.id]}
-    @organizations = Organization.all.map{|l| [l.name,l.id]}
+    @organization = Organization.first
   end
 
   def update
     @employee = Employee.find params[:id]
-    if @employee.update_attributes(employee_params)
-      flash[:notice] = "Successfully Updated"
-      redirect_to employees_path
-    else
-      @positions = EmployeePosition.all.map{|l| [l.name,l.id]}
-      @categories = EmployeeCategory.all.map{|l| [l.name,l.id]}
-      @organizations = Organization.all.map{|l| [l.name,l.id]}
-      render :edit
+    respond_to do |format|
+      if @employee.update(employee_params)
+        format.html { redirect_to employees_path, notice: 'Employee was successfully updated.' }
+      else
+        @positions = EmployeePosition.all.map{|l| [l.name,l.id]}
+        @categories = EmployeeCategory.all.map{|l| [l.name,l.id]}
+        @organization = Organization.first
+        format.html { render :edit }
+      end
     end
+
   end
 
   def destroy
     @employee = Employee.find params[:id]
-    if @employee.destroy
-      flash[:notice] = "Deleted Employee"
+    @employee.destroy
+    respond_to do |format|
+      format.html { redirect_to employees_path, notice: 'Employee was successfully destroyed.' }
     end
-    redirect_to employees_path
   end
 
   private

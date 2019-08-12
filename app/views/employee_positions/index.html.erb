@@ -1,0 +1,34 @@
+<h1>Listing Employee Positions</h1>
+
+
+<div class="row" >
+  <%unless @employee_positions.blank?%>
+
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <thead>
+        <tr>
+          <th class="text-center">Position Name</th>
+          <th class="text-center">Status</th>
+          <th class="text-center"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <%@employee_positions.each do |position|%>
+            <tr>
+              <td class="pt-3-half" contenteditable="true"><%= position.name%></td>
+              <td class="pt-3-half" contenteditable="true"><%= position.status? ? 'Active' : 'In-Active'%></td>
+              <td class="pt-3-half" >
+                <%= link_to 'Edit', edit_employee_position_path(position)%> |
+                <%= link_to 'Delete', position,method: :delete,data: { confirm: 'Are You sure?' }%>
+              </td>
+            </tr>
+        <%end%>
+        </tbody>
+      </table>
+  <%end%>
+</div>
+
+<br>
+<%= link_to 'New Employee Position', new_employee_position_path %>
+
+

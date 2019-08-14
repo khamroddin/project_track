@@ -1,6 +1,5 @@
 <div class="span4" >
   <h2 class="form-heading">Employees</h2>
-
   <%unless @employees.blank?%>
       <table class="table table-bordered table-responsive-md table-striped text-center">
         <thead>
@@ -25,4 +24,5 @@
         </tbody>
       </table>
   <%end%>
+  <%= link_to 'Add Employees', new_employee_path  %>
 </div>

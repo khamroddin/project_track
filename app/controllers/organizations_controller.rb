@@ -1,8 +1,10 @@
-class OrganizationsController < ApplicationController
+class OrganizationsController < ApplicationControlle
+  before_filter :authenticate_user!
 
   def index
     @organizations = Organization.all
   end
+
 
   def new
     @organization = Organization.new

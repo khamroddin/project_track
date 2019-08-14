@@ -1,7 +1,11 @@
 class EmployeeCategoriesController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @employee_categories = EmployeeCategory.all
   end
+
+
   def new
     @employee_category = EmployeeCategory.new
   end

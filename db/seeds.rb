@@ -10,4 +10,4 @@ User.create(name: 'emp', role_id: 2,email: 'khamar.md@arrowad.org', password: 'e
 Role.create(name: 'admin',status: true)
 Role.create(name: 'employee',status: true)
 
-locations = Location.create([{name: 'Banglore'},{name: 'Chennai'},{name: 'Hyderabad'},{name: 'Kochi'}])
+locations = Location.create([{name: 'Bangalore'},{name: 'Chennai'},{name: 'Hyderabad'},{name: 'Kochi'}])

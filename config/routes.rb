@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'home/index'
+  get 'home/employee_projects'
+  get 'home/dash_board'
 
   get 'controller/action'
 

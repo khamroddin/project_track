@@ -1,0 +1,30 @@
+<h1>Projects</h1>
+
+<table class="table table-bordered table-responsive-md table-striped text-center">
+  <thead>
+  <tr>
+    <th class="text-center">Project name</th>
+    <th class="text-center">Client</th>
+    <th class="text-center">Start date</th>
+    <th class="text-center">End date</th>
+    <th class="text-center">Manager</th>
+    <th class="text-center">Status</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.project_name %></td>
+        <td><%= project.client.client_name %></td>
+        <td><%= project.start_date %></td>
+        <td><%= project.end_date %></td>
+        <td><%= project.manager.full_name rescue nil %></td>
+        <td><%= project.status ? 'Active' : 'In-Active' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+

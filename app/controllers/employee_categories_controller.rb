@@ -1,4 +1,5 @@
 class EmployeeCategoriesController < ApplicationController
+  before_filter :authenticate_user!
   def new
     @employee_category = EmployeeCategory.new
     @employee_categories = EmployeeCategory.all

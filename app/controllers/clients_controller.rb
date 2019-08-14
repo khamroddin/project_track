@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-
+  before_filter :authenticate_user!
   def new
     @clients = Client.all
     @client = Client.new

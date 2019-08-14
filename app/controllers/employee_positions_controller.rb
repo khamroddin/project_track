@@ -1,4 +1,5 @@
 class EmployeePositionsController < ApplicationController
+  before_filter :authenticate_user!
   def new
     @employee_position = EmployeePosition.new
     @employee_positions = EmployeePosition.all

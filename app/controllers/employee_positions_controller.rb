@@ -1,8 +1,12 @@
 class EmployeePositionsController < ApplicationController
+  before_filter :authenticate_user!
 
   def  index
     @employee_positions = EmployeePosition.all
   end
+
+
+
   def new
     @employee_position = EmployeePosition.new
   end

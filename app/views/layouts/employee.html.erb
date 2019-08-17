@@ -38,22 +38,44 @@
   </head>
   <body>
 
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><%= image_tag(Organization.first.logo, size: '25') rescue "Logo" %></a>
+        <a class="navbar-brand" href="#"><%= Organization.first.name rescue "OrganizationName" %></a>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <div class="container">
       <div class="row">
-        <div class="col-sm-12">
+
+        <div class="col-lg-3">
+          <div class="well sidebar-nav">
+            <h3><%= current_user.name rescue ''%></h3>
+            <ul class="nav nav-list">
+              <li><%= link_to "Client", home_employee_projects_path  %></li>
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="col-lg-9">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-
-
-
       </div><!--/row-->
-
       <hr class="style2">
       <footer>
         <p>&copy; Company 2019</p>
       </footer>
+
     </div> <!-- /container -->
 
   </body>

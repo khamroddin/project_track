@@ -1,7 +1,11 @@
 class EmployeeCategoriesController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @employee_categories = EmployeeCategory.all
   end
+
+
   def new
     @employee_category = EmployeeCategory.new
   end
@@ -10,7 +14,7 @@ class EmployeeCategoriesController < ApplicationController
     @employee_category = EmployeeCategory.new(employee_categories_params)
     respond_to do |format|
       if @employee_category.save
-        format.html { redirect_to employee_category_path, notice: 'Employee Category was successfully created.' }
+        format.html { redirect_to employee_categories_path, notice: 'Employee Category was successfully created.' }
       else
         format.html { render :new }
       end
@@ -24,7 +28,7 @@ class EmployeeCategoriesController < ApplicationController
   def update
     @employee_category = EmployeeCategory.find(params[:id])
     respond_to do |format|
-      if @client.update(employee_categories_params)
+      if @employee_category.update(employee_categories_params)
         format.html { redirect_to employee_categories_path, notice: 'Employee Category was successfully updated.' }
       else
         format.html { render :edit }

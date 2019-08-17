@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   belongs_to :roles
   devise :database_authenticatable, :registerable,:recoverable, :rememberable, :validatable
-
+  has_one :employee
   def admin(user)
     if user.role_id == 1
       role = true
@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
     end
     return role
   end
+
 end

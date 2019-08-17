@@ -59,12 +59,12 @@
           <div class="well sidebar-nav">
             <h4>Employee Section</h4>
             <ul class="nav nav-list">
-              <li class="nav-header"><%= link_to "Employee Categories",  employee_categories_path  %></li>
-              <li><%= link_to "Employee Positions",  employee_positions_path %></li>
-              <li><%= link_to "Organization", organizations_path  %></li>
+              <li class="nav-header"><%= link_to "Employee Categories",  employee_categories_path %></li>
+              <li><%= link_to "Employee Positions",   employee_positions_path %></li>
+              <li><%= link_to "Organization", organizations_path %></li>
               <li><%= link_to "Employees", employees_path  %></li>
               <li><%= link_to "Client", clients_path  %></li>
-              <li><%= link_to "Project", projects_path  %></li>
+              <li><%= link_to "Projects", projects_path  %></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -74,8 +74,9 @@
       <%= yield %>
     </div>
   </div><!--/row-->
+  <hr class="style2">
   <footer>
-    <p>&copy; Company 2019</p>
+    <p>&copy; Arrowad 2019</p>
   </footer>
 
 </div> <!-- /container -->

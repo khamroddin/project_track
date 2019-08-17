@@ -2,6 +2,7 @@ class Employee < ActiveRecord::Base
   belongs_to :employee_position
   belongs_to :employee_category
   belongs_to :organization
+  belongs_to :user
 
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP },
             presence: true,
@@ -14,12 +15,13 @@ class Employee < ActiveRecord::Base
   validates :organization_id , presence: true
 
   after_create :create_user
-
+  has_many :projects,:foreign_key => 'manager_id'
   def full_name
     self.first_name + " " + self.last_name
   end
 
   def create_user
-   a= User.create(name: self.employee_no, role_id: 2, email: self.email, password: "pass"+self.employee_no)
+    user = User.create(name: self.employee_no, role_id: 2, email: self.email, password: "pass"+self.employee_no)
+    self.update_attributes(user_id: user.id)
   end
 end

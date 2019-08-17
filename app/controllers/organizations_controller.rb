@@ -1,12 +1,14 @@
 class OrganizationsController < ApplicationController
+  before_filter :authenticate_user!
 
   def index
     @organizations = Organization.all
   end
 
+
   def new
     @organization = Organization.new
-    @locations = Location.all.map{|l| [l.name,l.id]}
+    @locations = Location.all.map{|l| [l.name,l.id]} rescue []
   end
 
   def create

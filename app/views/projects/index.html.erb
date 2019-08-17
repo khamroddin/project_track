@@ -17,7 +17,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.project_name %></td>
-        <td><%= project.client.client_name %></td>
+        <td><%= project.client.client_name rescue nil %></td>
         <td><%= project.start_date %></td>
         <td><%= project.end_date %></td>
         <td><%= project.manager.full_name rescue nil %></td>

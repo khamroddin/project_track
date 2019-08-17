@@ -5,12 +5,13 @@ default: &default
   port: 5432
   host: localhost
   username: postgres
-  password: research
-  database: university
+  password: 123456
+  database: tracker
 
 development:
   <<: *default
 test:
+  database: tracker_test
   <<: *default
 production:
   <<: *default

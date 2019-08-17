@@ -14,5 +14,8 @@
  *= require_self
  */
 @import "bootstrap";
+.btn{
+    line-height: 1em;
+}
 
 

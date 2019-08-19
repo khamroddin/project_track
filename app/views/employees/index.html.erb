@@ -13,7 +13,7 @@
         <%@employees.each do |employee|%>
             <tr>
               <td class="pt-3-half" contenteditable="true"><%= employee.employee_no %></td>
-              <td class="pt-3-half" contenteditable="true"><%= employee.full_name %></td>
+              <td class="pt-3-half" contenteditable="true"><%= employee.full_name rescue nil%></td>
               <td class="pt-3-half" contenteditable="true"><%= employee.organization.name rescue "" %></td>
               <td class="pt-3-half">
                 <%= link_to 'Edit', edit_employee_path(employee)%> |

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @employee_log.employee_id %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @employee_log.task_id %>
+</p>
+
+<p>
+  <strong>Log date:</strong>
+  <%= @employee_log.log_date %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @employee_log.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @employee_log.end_time %>
+</p>
+
+<p>
+  <strong>Total hours:</strong>
+  <%= @employee_log.total_hours %>
+</p>
+
+<%= link_to 'Edit', edit_employee_log_path(@employee_log) %> |
+<%= link_to 'Back', employee_logs_path %>

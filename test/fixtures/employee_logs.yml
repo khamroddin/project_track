@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 1
+  task_id: 1
+  log_date: 2019-08-17
+  start_time: 2019-08-17 14:42:37
+  end_time: 2019-08-17 14:42:37
+  total_hours: 1.5
+
+two:
+  employee_id: 1
+  task_id: 1
+  log_date: 2019-08-17
+  start_time: 2019-08-17 14:42:37
+  end_time: 2019-08-17 14:42:37
+  total_hours: 1.5

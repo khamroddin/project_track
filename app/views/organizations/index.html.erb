@@ -1,5 +1,4 @@
-<div class="span4" >
-  <h2 class="form-heading">Orgaizations</h2>
+<h1>Listing Organizations</h1>
 
 <table class="table table-bordered table-responsive-md table-striped text-center">
   <thead>
@@ -15,13 +14,10 @@
       <tr>
         <td><%= link_to organization.name,organization.website ,:target => '_blank' %></td>
         <td><%= organization.location.name rescue ""%></td>
-        <td>
-          <%= link_to 'Edit', edit_organization_path(organization)%> |
-          <%= link_to 'Delete', organization,method: :delete,data: { confirm: 'Are You sure?' }%>
-        </td>
+        <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Add Organization', new_organization_path %>
+<%= link_to 'Add Organization', new_organization_path if @organizations.blank? %>
 </div>

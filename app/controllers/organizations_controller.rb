@@ -33,6 +33,7 @@ class OrganizationsController < ApplicationController
       if @organization.update(organization_params)
         format.html { redirect_to organizations_path, notice: 'Organization was successfully updated.' }
       else
+        @locations = Location.all.map{|l| [l.name,l.id]} rescue []
         format.html { render :edit }
       end
     end

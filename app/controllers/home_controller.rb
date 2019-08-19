@@ -24,7 +24,6 @@ class HomeController < ApplicationController
 
    end
    def employee_projects
-      @projects = current_user.employee.projects rescue nil
-
+      @projects = current_user.employee.projects rescue []
    end
 end

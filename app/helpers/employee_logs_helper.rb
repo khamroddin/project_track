@@ -1,0 +1,2 @@
+module EmployeeLogsHelper
+end

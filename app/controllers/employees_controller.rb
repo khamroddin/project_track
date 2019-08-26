@@ -57,10 +57,25 @@ class EmployeesController < ApplicationController
       format.html { redirect_to employees_path, notice: 'Employee was successfully destroyed.' }
     end
   end
+  def employee_projects
+    @project = Project.find(params[:project_id])
+    @employees = Employee.where("id NOT IN(?)", @project.manager_id).map{|l| [l.full_name,l.id]}
+    @project_employees = @project.employee_projects
+    @employee_project = EmployeeProject.new
+    if params[:employee_project]
+      @employee_project = EmployeeProject.new(employee_project_params)
+      if @employee_project.save
+        redirect_to employees_employee_projects_path(:project_id=>params[:project_id]), notice: 'Employee was successfully updated.'
+      end
+    end
 
+  end
   private
   def employee_params
     params.require(:employee).permit!
+  end
+  def employee_project_params
+    params.require(:employee_project).permit!
   end
 
 end

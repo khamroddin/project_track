@@ -32,4 +32,5 @@
 </table>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', projects_path %>|
+<%= link_to 'Enroll Emp', employees_employee_projects_path(:project_id=>@project.id) %>

@@ -1,0 +1,67 @@
+<table class="table table-bordered table-responsive-md table-striped text-center">
+  <thead>
+  <tr>
+    <th class="text-center">Project name</th>
+    <th class="text-center">Client</th>
+    <th class="text-center">Start date</th>
+    <th class="text-center">End date</th>
+    <th class="text-center">Manager</th>
+    <th class="text-center">Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><%= @project.project_name %></td>
+    <td><%= @project.client.client_name %></td>
+    <td><%= @project.start_date %></td>
+    <td><%= @project.end_date %></td>
+    <td><%= @project.manager.full_name rescue nil %></td>
+    <td><%= @project.status ? 'Active' : 'In-Active' %></td>
+  </tr>
+  <tr>
+    <th class="text-left" colspan="6">Emp Name</th>
+  </tr>
+  <%@project_employees.each_with_index do |project, index | %>
+      <tr>
+        <td><%= index+ 1 %></td>
+        <td colspan="5"><%= project.employee.full_name %></td>
+      </tr>
+  <%end%>
+  </tbody>
+</table>
+<main class="form">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <%= form_for @employee_project, url: {action: "employee_projects", params: {project_id: @project.id}} do |f| %>
+              <% if @employee_project.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@employee_project.errors.count, "error") %> prohibited this project from being saved:</h2>
+                    <ul>
+                      <% @employee_project.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+              <% end %>
+              <div class="form-group row">
+                <label for="location" class="col-md-4 col-form-label text-md-right">Employees</label>
+                <div class="col-md-6">
+                  <%= f.select :employee_id, @employees,{prompt: 'Select'},{class: "form-control mdb-select"} %>
+                  <%= f.hidden_field :project_id ,value: @project.id%>
+                </div>
+              </div>
+
+
+              <div class="form-group row">
+                <div class="col-md-6 text-center">
+                  <%= f.submit class: 'btn btn-primary' %>
+                </div>
+              </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

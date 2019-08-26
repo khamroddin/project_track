@@ -16,6 +16,8 @@ class Employee < ActiveRecord::Base
 
   after_create :create_user
   has_many :projects,:foreign_key => 'manager_id'
+  has_many :employee_projects,:foreign_key => 'employee_id'
+
   def full_name
     self.first_name + " " + self.last_name
   end

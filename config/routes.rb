@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'employees/index'
+  get 'employees/employee_projects'
+  post 'employees/employee_projects'
+
   devise_for :users
   get 'home/index'
   get 'home/employee_projects'

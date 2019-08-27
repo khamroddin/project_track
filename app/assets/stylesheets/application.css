@@ -16,5 +16,8 @@
  *= require bootstrap-timepicker
  */
 @import "bootstrap";
+.btn{
+    line-height: 1em;
+}
 
 

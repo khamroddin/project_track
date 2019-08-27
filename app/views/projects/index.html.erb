@@ -1,4 +1,4 @@
-<h1>Listing Projects</h1>
+<h4>Listing Projects</h4>
 
 <table class="table table-bordered table-responsive-md table-striped text-center">
   <thead>
@@ -22,9 +22,11 @@
         <td><%= project.end_date %></td>
         <td><%= project.manager.full_name rescue nil %></td>
         <td><%= project.status ? 'Active' : 'In-Active' %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', project, :class=>"btn btn-small btn-info" %></td>
+        <td><%= link_to 'Edit', edit_project_path(project), :class=>"btn btn-small btn-info" %></td>
+        <td>
+          <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-small btn-danger"%>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+<%= link_to 'New Project', new_project_path, :class=>"btn btn-small btn-primary" %>

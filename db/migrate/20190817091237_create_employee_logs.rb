@@ -6,9 +6,11 @@ class CreateEmployeeLogs < ActiveRecord::Migration
       t.date :log_date
       t.time :start_time
       t.time :end_time
-      t.float :total_hours
+      t.string :total_hours
+      t.text :notes
 
       t.timestamps null: false
     end
   end
 end
+

@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   resources :organizations
   resources :clients
   resources :projects
-  resources :employee_logs
+  resources :employee_logs do
+    collection do
+      get :calendar_view
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

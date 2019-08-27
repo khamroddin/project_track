@@ -49,6 +49,7 @@
         <a class="navbar-brand" href="#"><%= Organization.first.name rescue "OrganizationName" %></a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to image_tag("calendar.png", :border=>0, :class => 'calendar_icon',:width => 25),{action: 'calendar_view',controller: 'employee_logs'} %></li>
             <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
           </ul>
         </div>

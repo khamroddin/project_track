@@ -37,7 +37,8 @@ ActiveRecord::Schema.define(version: 20190817091237) do
     t.date     "log_date"
     t.time     "start_time"
     t.time     "end_time"
-    t.float    "total_hours"
+    t.string   "total_hours"
+    t.text     "notes"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

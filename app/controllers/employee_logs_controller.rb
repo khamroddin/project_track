@@ -24,15 +24,21 @@ class EmployeeLogsController < ApplicationController
   # POST /employee_logs
   # POST /employee_logs.json
   def create
-    @employee_log = EmployeeLog.new(employee_log_params)
-
+    @employee_log = EmployeeLog.find_by(log_date: params[:employee_log][:log_date])
     respond_to do |format|
-      if @employee_log.save
-        format.html { redirect_to @employee_log, notice: 'Employee log was successfully created.' }
+      if @employee_log.present?
+        @employee_log.update(employee_log_params)
+        format.html { redirect_to @employee_log, notice: 'Employee log was successfully updated.' }
         format.json { render :show, status: :created, location: @employee_log }
       else
-        format.html { render :new }
-        format.json { render json: @employee_log.errors, status: :unprocessable_entity }
+        @employee_log = EmployeeLog.new(employee_log_params)
+        if @employee_log.save
+          format.html { redirect_to @employee_log, notice: 'Employee log was successfully created.' }
+          format.json { render :show, status: :created, location: @employee_log }
+        else
+          format.html { redirect_to :calendar_view }
+          format.json { render json: @employee_log.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -61,6 +67,12 @@ class EmployeeLogsController < ApplicationController
     end
   end
 
+  def calendar_view
+    @employee_log = EmployeeLog.new()
+    @events = EmployeeLog.where(:employee_id => current_user.employee_record.id)
+    @tasks = Task.all.map{|p| [p.name,p.id]} rescue []
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_employee_log
@@ -69,6 +81,6 @@ class EmployeeLogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_log_params
-      params.require(:employee_log).permit(:employee_id, :task_id, :log_date, :start_time, :end_time, :total_hours)
+      params.require(:employee_log).permit(:employee_id, :task_id, :log_date, :start_time, :end_time, :total_hours,:notes)
     end
 end

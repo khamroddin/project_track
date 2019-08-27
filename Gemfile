@@ -33,6 +33,8 @@ gem "paperclip", "~> 6.0.0"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem "twitter-bootstrap-rails"
+gem "simple_calendar", "~> 2.0"
+gem 'bootstrap-timepicker-rails'
 
 gem 'web-console', '~> 2.0'
 group :development, :test do

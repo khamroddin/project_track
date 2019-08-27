@@ -1,0 +1,10 @@
+<%= month_calendar do |date,ev| %>
+    <%= content_tag :div, class: "calendar-day", data: {date: date} do %>
+        <% if events.collect(&:log_date).map{|p| p.to_date}.include?(date) %>
+            <span style="color: lightgreen"><%= date.day %></span>
+        <% else %>
+            <%= date.day %>
+        <% end %>
+    <% end %>
+<% end %>
+

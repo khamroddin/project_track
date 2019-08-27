@@ -2,7 +2,7 @@
 
 <p>
   <strong>Employee:</strong>
-  <%= @employee_log.employee_id %>
+  <%= @employee_log.employee.full_name rescue " "%>
 </p>
 
 <p>
@@ -17,12 +17,12 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @employee_log.start_time %>
+  <%= @employee_log.start_time.strftime("%I:%M %p") %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @employee_log.end_time %>
+  <%= @employee_log.end_time.strftime("%I:%M %p") %>
 </p>
 
 <p>
@@ -30,5 +30,4 @@
   <%= @employee_log.total_hours %>
 </p>
 
-<%= link_to 'Edit', edit_employee_log_path(@employee_log) %> |
-<%= link_to 'Back', employee_logs_path %>
+<%= link_to 'Back', {controller: :employee_logs,action: :calendar_view} %>

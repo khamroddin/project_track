@@ -1,0 +1,82 @@
+<%= javascript_include_tag params[:controller] %>
+
+<main class="form">
+  <div class="row">
+    <div class="row justify-content-center">
+      <div class="col-md-9">
+        <div class="card">
+          <hr class="style2">
+          <div class="card-body">
+            <%=form_for(@employee_log) do |cat|%>
+                <% if @employee_log.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@employee_log.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+                      <ul>
+                        <% @employee_log.errors.full_messages.each do |message| %>
+                            <li><%= message %></li>
+                        <% end %>
+                      </ul>
+                    </div>
+                <% end %>
+
+                <div id="events_calendar" class="col-xs-5">
+                  <%= render partial: "calendar", locals: {events: @events} %>
+                </div>
+
+                <div id="right side" class="col-xs-6 top-buffer">
+                  <%= cat.hidden_field :log_date,:value => Date.today %>
+                  <%= cat.hidden_field :employee_id,:value => current_user.employee_record.id %>
+
+
+                  <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Task</label>
+                    <div class="col-md-6 input-group">
+                      <%= cat.select :task_id, @tasks,{:prompt=> 'Select'}, class: "form-control" %>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Start Time</label>
+                    <div class="col-md-6 input-group bootstrap-timepicker timepicker">
+                      <%= cat.text_field :start_time, class: "form-control input-small date-inputs",:id => 'startTime' %>
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">End Time</label>
+                    <div class="col-md-6 input-group bootstrap-timepicker timepicker">
+                      <%= cat.text_field :end_time, class: "form-control input-small date-inputs",:id => 'endTime' %>
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                    </div>
+                  </div>
+
+
+                  <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Hours</label>
+                    <div class="col-md-6 input-group">
+                      <%= cat.text_field :total_hours, class: "form-control",:readonly => true %>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="name" class="col-md-4 col-form-label text-md-right">Notes</label>
+                    <div class="col-md-6 input-group">
+                      <%= cat.text_area :notes, class: "form-control" %>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-md-10 text-center">
+                      <%= cat.submit "Save" ,class: 'btn btn-primary' %>
+                    </div>
+                  </div>
+                </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

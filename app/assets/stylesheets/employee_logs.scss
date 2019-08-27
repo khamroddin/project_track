@@ -1,3 +1,24 @@
 // Place all the styles related to the employee_logs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-buffer{
+  margin-top: 30px;
+}
+.calendar-day {
+  height: 100%;
+  width: 100%;
+}
+.calendar-day:hover{
+  cursor: pointer;
+}
+td.day:hover{
+  border: 2px solid royalblue;
+}
+.simple-calendar .day{
+  height: 50px !important;
+}
+#events_calendar{width: 50%}
+.input-group[class*="col-"]{
+
+}

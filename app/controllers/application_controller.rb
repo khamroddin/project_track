@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
 
   def determine_layout
     module_name = self.class.to_s.split("::").first
-    return (module_name.eql?("Devise") ? "dashboard" : "application")
+    return "dashboard" if module_name.eql?("Devise")
+    return "employee" if current_user.present? and current_user.role_id == 2
+    "application"
   end
 
 end
